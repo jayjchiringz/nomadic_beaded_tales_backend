@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: nomadic-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py migrate
+      python manage.py createadmin
+    startCommand: gunicorn nomadic_beaded_core.wsgi
+    envVars:
+      - key: DJANGO_ALLOWED_HOSTS
+        value: nomadic-beaded-tales-backend.onrender.com
+      - key: DJANGO_SECRET_KEY
+        value: changeme-in-prod
+      - key: DJANGO_DEBUG
+        value: "false"
+
+  - type: web
+    name: nomadic-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://nomadic-beaded-tales-backend.onrender.com
