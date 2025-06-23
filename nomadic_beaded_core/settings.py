@@ -13,7 +13,11 @@ SECRET_KEY = 'django-insecure-u)3sio^n(t67s87%if=p06+^6xx_t%!0ff5l(6)$%c0b$$15e#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'nomadic-beaded-tales-backend.onrender.com'
+]
 
 
 # Application definition
