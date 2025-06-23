@@ -16,7 +16,7 @@ services:
       - key: DJANGO_DEBUG
         value: "false"
 
-  - type: web
+  - type: static
     name: nomadic-frontend
     rootDir: frontend
     buildCommand: npm install && npm run build
