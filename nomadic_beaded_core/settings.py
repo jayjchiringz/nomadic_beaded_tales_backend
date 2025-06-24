@@ -45,7 +45,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True  # Dev only
+# CORS_ALLOW_ALL_ORIGINS = True  # Dev only
+
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "https://nomadic-frontend.onrender.com",
+]
+
 
 ROOT_URLCONF = 'nomadic_beaded_core.urls'
 
