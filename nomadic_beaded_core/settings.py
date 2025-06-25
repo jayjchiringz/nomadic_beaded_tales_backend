@@ -6,9 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "unsafe-dev-secret")
 DEBUG = os.environ.get("DJANGO_DEBUG", "false").lower() == "true"
 
-# ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
-
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -23,7 +21,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # must be first
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -33,10 +31,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# CORS Settings
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     "https://nomadic-frontend.onrender.com",
 ]
+CORS_ALLOW_CREDENTIALS = True  # ✅ this is key for cookies/auth
 
 ROOT_URLCONF = 'nomadic_beaded_core.urls'
 
@@ -87,6 +87,7 @@ REST_FRAMEWORK = {
     )
 }
 
+# Debug output for Render logs
 print("DEBUG =", DEBUG)
 print("SECRET_KEY =", SECRET_KEY)
 print("ALLOWED_HOSTS =", ALLOWED_HOSTS)
