@@ -10,6 +10,9 @@ from django.http import JsonResponse
 def echo_headers(request):
     return JsonResponse(dict(request.headers))
 
+def api_health(request):
+    return JsonResponse({"status": "ok", "headers": dict(request.headers)})
+
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
