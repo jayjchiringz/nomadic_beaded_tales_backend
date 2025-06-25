@@ -1,11 +1,11 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
+
 from .models import Product
 from .serializers import ProductSerializer
-
-from django.http import JsonResponse
 
 def echo_headers(request):
     return JsonResponse(dict(request.headers))
