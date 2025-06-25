@@ -10,5 +10,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('debug/headers/', echo_headers),
-    path("api/health/", api_health),
+    path("health/", api_health),
 ]
