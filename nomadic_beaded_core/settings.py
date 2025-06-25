@@ -16,7 +16,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'nomadic-beaded-tales-backend.onrender.com'
+    'nomadic-beaded-tales-backend.onrender.com',
+    'nomadic-frontend.onrender.com'
 ]
 
 
